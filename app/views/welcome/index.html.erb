@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="jumbotron">
+      <h3>ABANDON ALL HOPE YE WHO ENTER! Or not.</h3>
+      <p>If you are a Ruby on Rails developer working on Windows, you have probably run into BCrypt errors before. You also probably know that previously there was no one place to go to fix the problem. Look no further weary traveler! For you are in BCrypt hell, and I am your Virgil!</p>
+    </div>
+    <div class="jumbotron">
+      <form class="bd-example">
+        <fieldset>
+          <legend>Common BCrypt Errors</legend><br>
+
+
+          <h5>Server Running, BCrypt Gem Required Error</h5>
+          <p>Chances are you've just started your rails app, your class has just started building a blog or blog like website, and you are getting ready to use the Devise gem or build some authentication into your app. In this first scenario, you have installed the Devise gem, you are trying to set up login authentication. You run your server, go to your login and something like this appears.</p><br>
+            <%= image_tag("devise_bcrypt_error.png", :class => "img-fluid", :alt => "Devise is running, but there is no BCrypt") %> <br>
+          <br>
+          <br>
+          <p>What has gone wrong? You did exactly as you were told!? Well this can happen to any programmer, you just needed to uncomment the BCrypt gem in your gemfile, which should look like this:  gem 'bcrypt', '~> 3.1.7' . For Macs and Linux, all you need to do now is run bundle install and devise should work with BCrypt now. For Windows, it's a little more complicated. </p> <br>
+
+
+          <h5>Command Line Server Starting Error</h5>
+          <p> Your instructor tells you to go ahead an uncomment the line: gem 'bcrypt', '~> 3.1.7' . You run bundle install because you've just touched your gem file, and no errors are thrown, everything seems fine. Then you try to start your server, and in the command line you get this: </p> <br>
+
+            <%= image_tag("bcrypt_error.png", :class => "img-fluid", :alt => "BCrypt Command line windows server error") %> <br>
+            <br>
+            <br>
+          <p>Good lord. All of your friends with Macbooks' servers are running just fine, and the instructor gives you a look that says, "Why, why are you the worst dear Windows user?" Luckily, there are some solutions.</p> <br>
+
+
+          <div class="container">
+            <div class="card text-white bg-info mb-3">
+              <div class="card-header">
+                <h5 class="card-title">Easy Solution</h5>
+                  </div>
+                    <div class="card-body">
+                      <h6 class="card-subtitle mb-2 text-white">Getting latest BCrypt version from Github</h6>
+                      <p class="card-text">In your gemfile, in place of the line: gem 'bcrypt', '~> 3.1.7' , copy in this line: gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt' . Run bundle install and you should be good to go.</p>
+                    </div>
+                </div><br>
+                  <div class="card text-white bg-success mb-3">
+                    <div class="card-header">
+                      <h5 class="card-title">Better Solution</h5>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-subtitle mb-2 text-white">Uninstalling BCrypt, and reinstalling the proper version.</h6>
+                      <p class="card-text">In your gemfile, replace the line: gem 'bcrypt', '~> 3.1.7' , with this line: gem 'bcrypt', '~> 3.1.11' . Now open your command line terminal, navigate to your rails project root path and run the following commands, in order: </p>
+                      <ol>
+                        <li class="card-text"> gem uninstall bcrypt-ruby </li>
+                        <li class="card-text"> gem uninstall bcrypt</li>
+                        <li class="card-text"> gem install bcrypt --platform=ruby</li>
+                        <li class="card-text"> bundle install </li>
+                      </ol>
+                      <p>Now you should* be good to go.</p>
+                    </div>
+                  </div>
+            </div><br>
+            <div class="row justify-content-md-center">
+              <h4>GOOD LUCK AND GODSPEED WEARY DEVELOPER!</h4>
+            </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
